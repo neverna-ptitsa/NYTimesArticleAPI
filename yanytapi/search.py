@@ -4,13 +4,16 @@ API_ROOT = 'http://api.nytimes.com/svc/search/v2/articlesearch.'
 
 API_SIGNUP_PAGE = 'http://developer.nytimes.com/docs/reference/keys'
 
+
 class NoAPIKeyException(Exception):
     def __init__(self, value):
         self.value = value
+
     def __str__(self):
         return repr(self.value)
 
-class articleAPI(object):
+
+class SearchAPI(object):
     def __init__(self, key = None):
         """
         Initializes the articleAPI class with a developer key. Raises an exception if a key is not given.
