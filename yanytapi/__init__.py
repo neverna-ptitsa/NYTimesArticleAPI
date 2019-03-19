@@ -1,6 +1,6 @@
 from .search import SearchAPI
 
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 __author__ = "Ed Kohlwey"
 __all__ = ["SearchAPI"]
 

@@ -9,7 +9,9 @@ import os
 import sys
 from shutil import rmtree
 
-from setuptools import find_packages, setup, Command
+from yanytapi import __version__ as version
+
+from setuptools import setup, Command
 
 # Package meta-data.
 NAME = 'yanytapi'
@@ -18,7 +20,7 @@ URL = "https://github.com/neverna-ptitsa/yanytapi"
 EMAIL = 'neverna-ptitsa@gmail.com'
 AUTHOR = 'Ed Kohlwey'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = "1.0.1"
+VERSION = version
 
 # What packages are required for this module to be executed?
 REQUIRED = [
