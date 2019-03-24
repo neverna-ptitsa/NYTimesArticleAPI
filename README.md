@@ -27,7 +27,7 @@ Simply import and initialize the API with your developer key:
 Then call the `search` function with your desired search parameters/values:
 
 ```python
->>> articles = api.search(q="Obama", 
+>>> articles = api.search("Obama", 
                           fq={"headline": "Obama", 
                               "source": ["Reuters", 
                                          "AP", 
@@ -37,29 +37,53 @@ Then call the `search` function with your desired search parameters/values:
                           facet_filter=True)
 ```
 
-The search function returns a Python dictionary of the search results.
+The search function returns an iterator of `Doc`'s with the following fields:
+```json
+[
+  "_id",
+  "blog",
+  "byline",
+  "document_type",
+  "headline",
+  "keywords",
+  "lead_paragraph",
+  "meta",
+  "multimedia",
+  "news_desk",
+  "pub_date",
+  "score",
+  "section_name",
+  "snippet",
+  "source",
+  "subsectoinName",
+  "type_of_material",
+  "uri",
+  "web_url",
+  "word_count"
+]
+```
 
 You can specify multiple filters by using a dictionary::
 
 ```python
 >>> fq = {"headline": "Obama", "source": ["Reuters", "AP", "The New York Times"]}
->>> articles = api.search(q="Obama", fq=fq)
+>>> articles = api.search("Obama", fq=fq)
 ```
 
 And multiple values by using a list::
 
 ```python
 >>> facet_field = ["source", "day_of_week"]
->>> articles = api.search(q="Obama", facet_field=facet_field)
+>>> articles = api.search("Obama", facet_field=facet_field)
 ```
 
 More examples:
 
 ```python
 # simple search
->>> articles = api.search(q="Obama")
+>>> articles = api.search("Obama")
 # search between specific dates
->>> articles = api.search(q="Obama", begin_date="20161001", end_date="20161020", page=2)
+>>> articles = api.search("Obama", begin_date="20161001", end_date="20161020", page=2)
 # access most recent request object
 >>> headers = api.req.headers
 ```
@@ -69,7 +93,7 @@ For a complete overview of the available search parameters, please refer to the 
 
 ## History
 
-This package was originally written by [Evan Sherlock][5] as [`nytimesarticle`][6]. It was subsequently forked and updated by [Matt Morrison][7], and subsequently released as [`NYTimesArticleAPI`][8], with contributions from [Gerald Spencer][9] and [Andrew Han][10]. `yanytapi` is a third iteration of forking focused mainly on packaging improvements.
+This package was originally written by [Evan Sherlock][5] as [`nytimesarticle`][6]. It was subsequently forked and updated by [Matt Morrison][7], and subsequently released as [`NYTimesArticleAPI`][8], with contributions from [Gerald Spencer][9] and [Andrew Han][10]. `yanytapi` is a third iteration of forking focused mainly on packaging improvements, now maintained by Ed Kohlwey.
 
 
 ## License
